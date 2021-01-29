@@ -1,0 +1,22 @@
+/* mat-grid-tile {
+    background: lightblue;
+} */
+
+.something{
+    width:90%;
+    height:90%;
+}
+
+.text{
+    text-align: right;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-align: left;
+}
+  
+.total {
+    font-size: 7em;
+}

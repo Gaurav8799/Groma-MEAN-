@@ -1,0 +1,110 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top ">
+
+  <button mat-icon-button (click)="toggleSideBar()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="container">
+    <a class="navbar-brand" href="/home">Groma</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">Category</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/seller" routerLinkActive="active">Seller</a>
+        </li> 
+      </ul>
+  
+      <select class="input-select" [(ngModel)]="selectedValue" (change)="select(ref)" >
+        <option value="Pune">Pune</option>
+        <option value="Ambala">Ambala</option> 
+        <option value="agra">Agra</option>
+      </select>
+      
+      <select class="input-select" [(ngModel)]="selectedCanteenValue" #ref (change)="selectCanteen(ref)"  >
+        <option *ngFor='let canteen of canteens' [value]="canteen.name">{{canteen.name}}</option>
+      </select>
+      
+
+      <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 mt-4 my-md-0 mw-100 navbar-search">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <select class="input-select" [(ngModel)]="category" [ngModelOptions]="{standalone: true}">
+              <option value="All">All Categories</option>
+              <option value="Biscuit">Biscuit</option>
+              <option value="None">Others</option>
+            </select>
+          </div>
+          <input type="text" class="form-control" [(ngModel)]="search" placeholder="Recipient's username"
+            [ngModelOptions]="{standalone: true}">
+          <div class="input-group-append ">
+            <div class="input-group-text searchBtn">
+              <a href="search">
+                <mat-icon (click)="onSearch()">search</mat-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <!-- <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+      <div class="input-group">
+        <input class="bg-light form-control border-0 small" type="text" placeholder="Search for ..." />
+        <div class="input-group-append">
+          <button class="btn btn-primary py-0" type="button">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+      </div>
+    </form> -->
+
+      <!-- <div class="header-search ">
+        <form>
+          <select class="input-select rounded-pill h-100" [(ngModel)]="category" [ngModelOptions]="{standalone: true}">
+            <option value="All">All Categories</option>
+            <option value="Biscuit">Biscuit</option>
+            <option value="None">Others</option>
+          </select>
+          <input class="rounded-pill" placeholder="Search here" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
+          <button (click)="onSearch()" class="btn-danger rounded-pill"><a class="nav-link" href="search">Search</a></button> -->
+      <!-- a tag is added in search bcoz page is not reloading again for search -->
+      <!-- </form>
+      </div>  -->
+
+
+      <ul class="navbar-nav">
+        <a class="nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!_authService.loggedIn()">Login</a>
+        <a class="nav-link" routerLink="/register" routerLinkActive="active"
+          *ngIf="!_authService.loggedIn()">Register</a>
+        <a class="nav-link" style="cursor:pointer" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()">
+          <mat-icon>exit_to_app</mat-icon>
+        </a>
+
+        <!-- <button *ngIf="_authService.loggedIn()" mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>person_outline</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button (click)="_authService.logoutUser()" mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon>
+            Sign out
+          </button>
+        </mat-menu> -->
+
+        <a class="nav-link" routerLink="/cart" routerLinkActive="active" style="cursor:pointer"
+          *ngIf="_authService.loggedIn()">
+          <mat-icon [matBadge]="cartLength" matBadgeColor="warn">shopping_cart</mat-icon>
+          <!-- {{ _authService.userInfo()?.subject }} -->
+        </a>
+      </ul>
+    </div>
+  </div>
+</nav>

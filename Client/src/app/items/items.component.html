@@ -1,0 +1,27 @@
+
+
+<mat-grid-list [cols]="breakpoint" rowHeight="4:5" gutterSize="0px" (window:resize)="onResize($event)" >
+  <mat-grid-tile *ngFor="let product of pagedList">
+    <div>
+      <mat-card class="example-card">
+        <img mat-card-image src="http://localhost:3000/{{product.productImage}}" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            {{product.name}} &nbsp; Price: {{ product.price | currency:'INR'}} <br>
+            {{product.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button color="primary" mat-raised-button>ADD TO CART</button>
+          <button color="accent" mat-raised-button>ADD TO WISHLIST</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-paginator [length]="length"
+[pageSize]="pageSize"
+[pageSizeOptions]="pageSizeOptions"
+(page)="OnPageChange($event)">
+</mat-paginator>

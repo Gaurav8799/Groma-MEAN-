@@ -1,0 +1,39 @@
+table {
+    width: 100%;
+  }
+
+.mat-column-select{
+   flex: 0 0 100px;
+}
+  
+/* 
+.mat-column-'column_name'{
+   flex: 0 0 50px;
+}
+*/
+
+.mat-column-name{
+  flex: 0 0 400px;
+}
+
+.place{
+  text-align: right;
+}
+
+.place button{
+  width:25%;
+}
+  
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+}

@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Update {{data.name}}</h1>
+<div mat-dialog-content>
+    <form #form="ngForm"  class="example-form">
+        <mat-form-field class="example-full-width">
+            <mat-label>Item Name</mat-label>
+            <input matInput name="name"  [(ngModel)]="data.name">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Favorite food</mat-label>
+            <mat-select [(ngModel)]="data.category" name="category">
+              <mat-option  value="Biscuit">Biscuit</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Price</mat-label>
+            <input matInput name="price" [(ngModel)]="data.price">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Quantity</mat-label>
+            <input matInput name="quantity" [(ngModel)]="data.quantity">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="Ex. About the product..." name="description" [(ngModel)]="data.description"></textarea>
+          </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Image</mat-label>
+            <ngx-mat-file-input placeholder="Select Image" valuePlaceholder="No image file selected" name="image"
+            ngModel  required></ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button color="warn" mat-raised-button mat-dialog-close="false">No Thanks</button>
+  <button color="primary" mat-raised-button [mat-dialog-close]="form.value" cdkFocusInitial>Update</button>
+</div>

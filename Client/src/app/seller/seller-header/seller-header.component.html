@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button (click)="toggleSideBar()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span> Groma Seller </span>
+
+        <!-- npm i fxlayout angular -->
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">   
+            <ul fxLayout="row" fxLayoutGap="20px">
+                <li routerLink="/seller/login" routerLinkActive="active" *ngIf="!_authService.sellerLoggedIn()">
+                  Login
+                </li>
+                <li routerLink="/seller/register" routerLinkActive="active" *ngIf="!_authService.sellerLoggedIn()">
+                  Register
+                </li>
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon>settings</mat-icon>
+                    </button>
+                </li>
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon>help_outline</mat-icon>
+                    </button>
+                </li>
+                <li>
+                    <button *ngIf="_authService.sellerLoggedIn()" mat-button [matMenuTriggerFor]="menu">
+                        <mat-icon>person_outline</mat-icon>
+                    </button>
+                    <mat-menu  #menu="matMenu">
+                        <button (click)="_authService.logOutSeller()" mat-menu-item>
+                            <mat-icon>exit_to_app</mat-icon>
+                            Sign out
+                        </button>
+                    </mat-menu>
+
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

@@ -1,0 +1,27 @@
+<mat-grid-list class="container" [cols]="breakpoint" rowHeight="4:5" gutterSize="0px" (window:resize)="onResize($event)" >
+    <p>{{msg}}</p>
+    <mat-grid-tile *ngFor="let product of pagedList">
+      <div>
+        <mat-card class="example-card">
+          <img mat-card-image src="http://localhost:3000/{{product.productImage}}" alt="Photo of a Shiba Inu"
+            (click)="openSingleProduct(product)">
+          <mat-card-content (click)="openSingleProduct(product)">
+            <p>
+              {{product.name}} &nbsp;  Price : {{ product.price | currency:'INR'}} <br>
+              {{product.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button color="primary" mat-raised-button (click)="addtocart(product)">ADD TO CART</button>
+            <button color="accent" mat-raised-button>ADD TO WISHLIST</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  
+  <mat-paginator [length]="length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="OnPageChange($event)">
+  </mat-paginator>

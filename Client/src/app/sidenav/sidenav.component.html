@@ -1,0 +1,40 @@
+<mat-nav-list>
+    <div class="profile-card" *ngIf="_authService.loggedIn()">
+        <div class="header" (click)="getInfo()">
+            <h2>{{ _authService.userInfo()?.name }}</h2>
+            <h4>{{ _authService.userInfo()?.email }}</h4>
+        </div>
+        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Gaurav Malik">
+    </div>
+
+    <div class="profile-card" *ngIf="!_authService.loggedIn()">
+        <div class="header">
+            <h2>Guest</h2>
+            <a class="nav-link" routerLink="/login" routerLinkActive="active" >Login</a>
+        </div>
+        <img src="http://localhost:3000/uploads/blank user.png" alt="Guest">
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Pages</h2>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Dashboard</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/order">My Orders</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/articles">Articles</a>
+
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Tools</h2>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+        <mat-icon>import_contacts</mat-icon>
+        Contacts
+    </a>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/contacts">
+        <mat-icon>contact_phone</mat-icon>
+        Leads
+    </a>
+
+</mat-nav-list>
