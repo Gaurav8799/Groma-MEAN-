@@ -1,6 +1,6 @@
 # Groma-MERN-
 
-It is Ecommerce application with MERN stack.
+It is Ecommerce application with MEAN stack.
 
 To run server go to "Bin" folder and run command "nodemon server".
 
