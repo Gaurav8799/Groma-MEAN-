@@ -1,4 +1,4 @@
-# Groma-MERN-
+# Groma-MEAN-
 
 It is Ecommerce application with MEAN stack.
 
